@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to AI Writer</h1>
+        <nav>
+            <ul>
+                <li><a href="https://fang3yuan.github.io/ai-writer/">Home</a></li>
+                <li><a href="#chat">Chat with AI</a></li>
+                <li><a href="#image">Generate Image</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="chat">
+            <h2>Chat with AI</h2>
+            <textarea id="inputText" placeholder="Type your message here..."></textarea>
+            <button onclick="sendToAI()">Send</button>
+            <div id="response"></div>
+        </section>
+        <section id="image">
+            <h2>Image Generation</h2>
+            <input type="text" id="imageInput" placeholder="Describe image">
+            <button onclick="generateImage()">Generate Image</button>
+            <div id="imageResult"></div>
+        </section>
+    </main>
+    <footer>
+        <p>Powered by <a href="https://fang3yuan.github.io/ai-writer/">AI Writer</a></p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
