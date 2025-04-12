@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Generator</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+    <header>
+        <h1>Image Generator</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="chat.html">Chat</a>
+            <a href="image.html">Image Generator</a>
+            <button id="toggle-theme">Toggle Theme</button>
+        </nav>
+    </header>
+    <main>
+        <input type="text" id="image-prompt" placeholder="Enter image description..." />
+        <button onclick="generateImage()">Generate</button>
+        <div id="image-output"></div>
+    </main>
+    <script src="assets/js/image.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+</html>
