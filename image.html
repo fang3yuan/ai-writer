@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Image Generator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+<header>
+  <h1>AI Image Generator</h1>
+  <nav>
+    <a href="index.html"><i data-lucide="home"></i> Home</a>
+    <a href="chat.html"><i data-lucide="message-circle"></i> Chat</a>
+  </nav>
+</header>
+
+<main>
+  <section class="image-container">
+    <h2>Generate Images from Descriptions</h2>
+    <textarea id="image-description" placeholder="Describe the image you want..." rows="4"></textarea>
+    <button id="generate-image">Generate Image</button>
+    <div id="image-output"></div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Smart AI Hub</p>
+</footer>
+
+<script>
+  lucide.createIcons();
+
+  document.getElementById("generate-image").addEventListener("click", async function () {
+    const description = document.getElementById("image-description").value.trim();
+    if (!description) {
+      alert("Please enter a description.");
+      return;
+    }
+
+    document.getElementById("image-output").innerHTML = "<p>Loading...</p>";
+
+    try {
+      const response = await fetch("https://api.deepai.org/api/text2img", {
+        method: "POST",
+        headers: {
+          "Api-Key": "your-deepai-api-key-here",
+        },
+        body: new URLSearchParams({
+          text: description,
+        }),
+      });
+
+      const data = await response.json();
+      const imageUrl = data.output_url;
+      document.getElementById("image-output").innerHTML = `<img src="${imageUrl}" alt="Generated Image" />`;
+    } catch (error) {
+      document.getElementById("image-output").innerHTML = "<p>Something went wrong. Please try again.</p>";
+    }
+  });
+</script>
+
+<style>
+.image-container {
+  max-width: 800px;
+  margin: 30px auto;
+  text-align: center;
+  background: #1e1e1e;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#image-description {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0097a7;
+}
+
+#image-output img {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+</style>
+
+</body>
+</html>
