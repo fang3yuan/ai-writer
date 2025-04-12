@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>مولد النصوص بالذكاء الاصطناعي - DeepSeek</title>
+  <title>مولد النصوص - DeepSeek AI</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -98,7 +98,7 @@
   <div class="container">
     <h1>AI Text Generator - DeepSeek</h1>
 
-    <button onclick="toggleDarkMode()">تبديل الوضع</button>
+    <button onclick="toggleDarkMode()">تبديل الوضع الليلي</button>
 
     <select id="type">
       <option value="technical article">مقال تقني</option>
@@ -118,7 +118,6 @@
     <div class="loading" id="loading">جاري التوليد...</div>
 
     <div class="output" id="output"></div>
-
     <div class="meta" id="metaInfo"></div>
 
     <div class="controls">
@@ -154,7 +153,7 @@
       loading.style.display = "block";
 
       try {
-        const response = await fetch("https://api.deepseek.com/chat/completions", {
+        const response = await fetch("https://api.deepseek.com/v1/chat/completions", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -173,7 +172,7 @@
 
         const data = await response.json();
 
-        if (data.choices && data.choices[0]) {
+        if (response.ok && data.choices && data.choices[0]) {
           const text = data.choices[0].message.content;
           outputDiv.textContent = text;
 
@@ -182,16 +181,14 @@
           const now = new Date().toLocaleString('ar-EG');
 
           meta.textContent = `عدد الكلمات: ${wordCount} | الحروف: ${charCount} | التوقيت: ${now}`;
-          
-          // تشغيل تنبيه صوتي
           const beep = new Audio("https://actions.google.com/sounds/v1/alarms/beep_short.ogg");
           beep.play();
 
         } else {
-          outputDiv.textContent = "حدث خطأ أثناء التوليد.";
+          outputDiv.textContent = "حدث خطأ أثناء التوليد:\n" + (data.error?.message || JSON.stringify(data));
         }
       } catch (err) {
-        outputDiv.textContent = "تعذر الاتصال بخدمة الذكاء الاصطناعي.";
+        outputDiv.textContent = "تعذر الاتصال بالخادم. تأكد من الاتصال بالإنترنت.";
       } finally {
         loading.style.display = "none";
       }
