@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat with AI</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1>AI Chat Assistant</h1>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="chat.html">Chat</a>
+      <a href="generate.html">Image Generator</a>
+    </nav>
+  </header>
+  <main>
+    <div class="chat-container">
+      <div id="chat-box" class="chat-box"></div>
+      <textarea id="user-input" placeholder="Type your message..."></textarea>
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </main>
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById('user-input');
+      const chatBox = document.getElementById('chat-box');
+      const userText = input.value.trim();
+      if (!userText) return;
+      chatBox.innerHTML += `<div class='user-msg'><b>You:</b> ${userText}</div>`;
+      input.value = '';
+
+      try {
+        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer sk-proj-YOUR_KEY_HERE"
+          },
+          body: JSON.stringify({
+            model: "openai/gpt-3.5-turbo",
+            messages: [{ role: "user", content: userText }]
+          })
+        });
+        const data = await response.json();
+        const aiText = data.choices?.[0]?.message?.content || "Error!";
+        chatBox.innerHTML += `<div class='ai-msg'><b>AI:</b> ${aiText}</div>`;
+      } catch (e) {
+        chatBox.innerHTML += `<div class='ai-msg error'>Error: ${e.message}</div>`;
+      }
+    }
+  </script>
+</body>
+</html>
