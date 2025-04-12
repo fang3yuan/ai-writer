@@ -1,17 +1,27 @@
+/* Reset & Box Sizing */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Font & Body Settings */
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #121212;
-  color: #fff;
   line-height: 1.6;
+  background-color: #121212;
+  color: #f0f0f0;
+  transition: background-color 0.3s, color 0.3s;
   padding: 0 20px;
 }
 
+/* Light Mode Overrides */
+body.light-mode {
+  background-color: #ffffff;
+  color: #121212;
+}
+
+/* Header */
 header {
   background: #1e1e1e;
   padding: 20px 0;
@@ -20,24 +30,25 @@ header {
 }
 
 header h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 10px;
 }
 
 nav a {
+  margin: 0 15px;
   color: #00bcd4;
   text-decoration: none;
-  margin: 0 15px;
   font-weight: bold;
-  font-size: 1rem;
   display: inline-flex;
   align-items: center;
+  font-size: 1rem;
 }
 
-nav a i {
-  margin-right: 6px;
+nav a:hover {
+  text-decoration: underline;
 }
 
+/* Hero Section (Homepage) */
 .hero {
   text-align: center;
   padding: 50px 20px;
@@ -70,6 +81,7 @@ nav a i {
   margin: 10px;
   text-decoration: none;
   transition: background 0.3s;
+  display: inline-block;
 }
 
 .btn.alt {
@@ -80,6 +92,7 @@ nav a i {
   background: #008697;
 }
 
+/* Features Section */
 .features {
   display: flex;
   flex-wrap: wrap;
@@ -109,6 +122,7 @@ nav a i {
   margin-bottom: 10px;
 }
 
+/* Footer */
 footer {
   text-align: center;
   padding: 20px;
@@ -117,3 +131,126 @@ footer {
   font-size: 0.9rem;
   margin-top: 50px;
 }
+
+/* Toggle Mode Button */
+button.toggle-mode {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button.toggle-mode:hover {
+  background-color: #0097a7;
+}
+
+/* Chat Page Styles */
+.chat-container {
+  max-width: 800px;
+  margin: 30px auto;
+  background: #1e1e1e;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#chat-box {
+  height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: #151515;
+}
+
+.chat-message {
+  margin-bottom: 10px;
+}
+
+#chat-form {
+  display: flex;
+  gap: 10px;
+}
+
+#user-input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+#chat-form button {
+  padding: 12px;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+#chat-form button:hover {
+  background-color: #0097a7;
+}
+
+/* Image Generation Page Styles */
+.image-container {
+  max-width: 800px;
+  margin: 30px auto;
+  text-align: center;
+  background: #1e1e1e;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.image-container textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  font-size: 1rem;
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+}
+
+.image-container button {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.image-container button:hover {
+  background-color: #0097a7;
+}
+
+#image-output img {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+  border-radius: 12px;
+  border: 2px solid #444;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav a {
+    margin: 5px;
+  }
+  }
