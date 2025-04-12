@@ -3,56 +3,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smart AI Hub</title>
+  <title>AI Hub - Home</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-  <header>
-    <h1>Smart AI Hub</h1>
-    <nav>
-      <a href="chat.html"><i data-lucide="message-circle"></i> Chat</a>
-      <a href="image.html"><i data-lucide="image"></i> Image Generator</a>
-    </nav>
-  </header>
+<header>
+  <h1>Welcome to AI Hub</h1>
+  <nav>
+    <a href="chat.html"><i data-lucide="message-circle"></i> Chat with AI</a>
+    <a href="image.html"><i data-lucide="image"></i> Generate Image</a>
+  </nav>
+</header>
 
-  <main>
-    <section class="hero">
-      <h2>Your All-in-One AI Companion</h2>
-      <p>Chat with AI, create images, and explore intelligent tools – all in one place.</p>
-      <div class="buttons">
-        <a href="chat.html" class="btn">Start Chatting</a>
-        <a href="image.html" class="btn alt">Generate Images</a>
-      </div>
-    </section>
+<main>
+  <section>
+    <h2>Experience the Power of Artificial Intelligence</h2>
+    <p>Explore our AI-powered chat, image generation, and more!</p>
+    <button><a href="chat.html">Start Chatting</a></button>
+  </section>
+</main>
 
-    <section class="features">
-      <div class="feature">
-        <i data-lucide="bot"></i>
-        <h3>Smart Chat</h3>
-        <p>Talk to an AI that understands and responds naturally.</p>
-      </div>
-      <div class="feature">
-        <i data-lucide="brush"></i>
-        <h3>Image Creation</h3>
-        <p>Turn your imagination into pictures using simple words.</p>
-      </div>
-      <div class="feature">
-        <i data-lucide="moon-star"></i>
-        <h3>Dark Mode Ready</h3>
-        <p>Comfortable on the eyes, day or night.</p>
-      </div>
-    </section>
-  </main>
+<button class="toggle-mode" onclick="toggleMode()">Switch Mode</button>
 
-  <footer>
-    <p>&copy; 2025 Smart AI Hub. Powered by DeepAI</p>
-  </footer>
+<footer>
+  <p>&copy; 2025 Smart AI Hub</p>
+</footer>
 
-  <script>
-    lucide.createIcons();
-  </script>
+<script>
+  lucide.createIcons();
+
+  // وظيفة لتبديل الوضع بين الداكن والفاتح
+  function toggleMode() {
+    document.body.classList.toggle('light-mode');  // تبديل الفصل بين الوضعين
+  }
+</script>
+
+<style>
+  /* الوضع المظلم (Dark Mode) */
+  body {
+    background-color: #121212;
+    color: #f0f0f0;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  /* الوضع الفاتح (Light Mode) */
+  body.light-mode {
+    background-color: #ffffff;
+    color: #121212;
+  }
+
+  header {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+    color: #00bcd4;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 10px;
+    font-size: 1.2rem;
+  }
+
+  nav a:hover {
+    color: #00bcd4;
+  }
+
+  main {
+    text-align: center;
+    padding: 40px;
+  }
+
+  section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  section p {
+    font-size: 1.2rem;
+  }
+
+  button {
+    background-color: #00bcd4;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  button a {
+    text-decoration: none;
+    color: white;
+  }
+
+  button:hover {
+    background-color: #0097a7;
+  }
+
+  /* تصميم الزر الذي سيقوم بالتبديل */
+  button.toggle-mode {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  button.toggle-mode:hover {
+    background-color: #0097a7;
+  }
+</style>
+
 </body>
 </html>
